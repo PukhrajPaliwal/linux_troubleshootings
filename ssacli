@@ -7,3 +7,14 @@ Now run below commandsL check list of disks
 ssacli ctrl slot=2 pd all show
 ssacli ctrl slot=2 ld all show status
 ssacli ctrl slot=2 array a show
+ssacli ctrl slot=2 array A create type=ld size=6443210 raid=5
+ pvcreate /dev/sdbb
+ pvs
+ vgcreate mysql_vg /dev/sdbb
+ vgs
+ lvcreate -L +110G -n lvmysql_OS mysql_vg
+ lvs
+ lvcreate -L +3T -n lvmysql_data2 mysql_vg
+ mkfs.xfs /dev/mapper/mysql_vg-lvmysql_OS
+ mkdir /mysql_OS
+ mount /dev/mapper/mysql_vg-lvmysql_OS /mysql_OS/
