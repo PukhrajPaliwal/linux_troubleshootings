@@ -1,9 +1,9 @@
 Now run below command based on space request. : 
-
 ssacli ctrl slot=2 array A create type=ld size=8912896 raid=5 
-
 here we need to 8.5 tb . 
-
 check below command disk added or not 
-
 ssacli ctrl slot=2 ld all show status 
+Now run below commandsL check list of disks
+ssacli ctrl slot=2 pd all show
+ssacli ctrl slot=2 ld all show status
+ssacli ctrl slot=2 array a show
