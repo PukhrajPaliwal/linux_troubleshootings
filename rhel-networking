@@ -1,0 +1,22 @@
+RHEL Networking
+cat ifcfg-enp22s0f4
+TYPE=Ethernet
+BOOTPROTO=none
+DEVICE=enp22s0f4
+ONBOOT=yes
+MASTER=bond1
+SLAVE=yes
+cat ifcfg-bond1.3137
+TYPE=Ethernet
+BOOTPROTO=none
+DEVICE=bond1.3137
+ONBOOT=yes
+IPADDR=$IP
+NETMASK=$subnet
+VLAN=yes
+cat ifcfg-bond1
+TYPE=Ethernet
+BOOTPROTO=none
+DEVICE=bond1
+ONBOOT=yes
+BONDING_OPTS="mode=1 miimon=100"
