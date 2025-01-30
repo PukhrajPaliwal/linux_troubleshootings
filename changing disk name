@@ -1,0 +1,21 @@
+[root@MNDCAUTDBN5 ~]# cat /etc/sysconfig/grub
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rd.lvm.lv=rhel/usr rhgb quiet transparent_hugepage=never rd.driver.pre=megaraid_sas rd.driver.post=mpt3sas rd.driver.post=lpfc"
+GRUB_DISABLE_RECOVERY="true"
+
+#grub2-mkconfig -o /boot/grub2/grub.cfg     -  after changing in above file need to load the module 
+
+
+#############
+rd.driver.pre  -  for os disk  and its raid module is megaraid_sas
+rd.driver.post - for HDD disk and its raid module is mpt3sas
+rd.driver.post - for LUN and its raid module is lpfc          -  this need to add when server having FC LUN, if no lun then no need.
+
+How you will identify the raid controller that you have to check.
+As I have get the command from google is
+#udevadm info -a -n /dev/sdc       you have to give the name of current disk and you will know the module
+##################################
