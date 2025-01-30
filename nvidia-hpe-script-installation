@@ -1,0 +1,31 @@
+-------------------------GPU NVIDIA--------------------
+
+-->New server installation
+
+--copy file(NVIDIA-1&2 script and NVIDIA-Linux.txt module) from old server.
+ubuntu@dc2cpbgk8won005:~$ pwd
+/home/ubuntu
+ubuntu@dc2cpbgk8won005:~$ ls
+NIVIDI-SCRPT-1.sh  NIVIDI-SCRPT-2.sh  NVIDIA-Linux-x86_64-525.85.05.txt  
+ubuntu@dc2cpbgk8won005:~$
+
+--Run NVIDIA-Linux.txt --     #
+sudo bash NVIDIA-Linux-x86_64-525.85.05.txt
+--Run 1st Script,This will installa package and do grub configuration and reboot the serevr
+--cat 2nd script and run the command after came up the srever
+
+######################################################################################
+
+--->Running server, If nvidia-smi doesnt show output
+
+ubuntu@dc2cpbgk8won005:~$ pwd
+/home/ubuntu
+ubuntu@dc2cpbgk8won005:~$ ls
+NIVIDI-SCRPT-1.sh  NIVIDI-SCRPT-2.sh  NVIDIA-Linux-x86_64-525.85.05.txt
+
+--- uninstall nvidia
+Remove "noexec" from /tmp under fstab, for execution file
+sudo /usr/bin/nvidia-uninstall
+
+----Install again
+sudo bash NVIDIA-Linux-x86_64-525.85.05.txt
