@@ -1,0 +1,14 @@
+OS upgrade
+
+1. Apply available OS patches by executing below commands.
+a. Update apt cache
+i. rm -rf /var/cache/apt/*
+ii. rm -rf /var/lib/apt/lists/*
+iii. apt-get update
+b. Reboot server to use the latest installed kernel
+c. Remove old kernels
+
+once server came up we need to check kernel using below command.
+dpkg -l | grep -i kernel
+for purging old kernel we need to use below command
+dpkg -l | grep '^rc'  | awk '{print $2}' | xargs dpkg --purge
