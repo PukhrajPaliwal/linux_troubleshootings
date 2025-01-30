@@ -1,0 +1,29 @@
+Before Cordon the node:
+
+1) need to check hosts entries
+2) need to collect snat rules #sudo iptables -t nat -L CUSTOMSNAT -v -n
+
+3) kubectl cordon <host_name>
+4) kubectl drain <host_name>
+	
+Befor uncordon the node:	
+1) Add hosts in node
+2) add snat rules, take reference as working nodes
+3) check service status like kubelet, containerd, like
+3) check node status
+4) if node is ready& unsheduled state, Than to do uncordon the node
+5 #kubectl uncordon < node_name>
+
+
+Adding snat rules:
+1) check any snat rules are their or not
+# sudo iptables -t nat -L CUSTOMSNAT -v -n
+IF not follow below steps.
+
+
+sudo iptables -t nat -N CUSTOMSNAT
+sudo iptables -t nat -A POSTROUTING -j CUSTOMSNAT
+
+sudo iptables -t nat -A CUSTOMSNAT -s 10.224.0.0/12 -d 10.142.0.0/20 -o bond2.3500 -j MASQUERADE
+sudo iptables -t nat -A CUSTOMSNAT -s 10.224.0.0/12 -d 10.82.102.0/24 -o bond0.906  -j MASQUERADE
+sudo iptables -t nat -A CUSTOMSNAT -s 10.224.0.0/12 -d 10.66.0.0/16 -o bond1.916  -j MASQUERADE
