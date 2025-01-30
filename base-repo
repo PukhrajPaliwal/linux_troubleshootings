@@ -1,0 +1,11 @@
+New physical server linux--base.repo
+vi /etc/yum.repos.d/base.repo
+mkdir /root/iso
+mount -o loop /tmp/rhel-server-7.9-x86_64-dvd.iso /root/iso
+vi /etc/yum.repos.d/base.repo
+[base]
+name=RHEL7.9
+baseurl=file:///root/iso
+enabled=1
+gpgcheck=0
+./MDC-RHEL-7-IBM_Hardening_script.sh
