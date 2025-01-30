@@ -1,0 +1,11 @@
+Repo subscription
+RHEL-6/7 ---->
+
+echo " $IP     $FQDN        $HOST " >> /etc/hosts
+yum remove 'katello-ca-consumer*'
+rm -rf /etc/sysconfig/rhn/systemid
+rpm -Uvh http://$FQDN/pub/katello-ca-consumer-latest.noarch.rpm
+subscription-manager register --org="$ORG" --activationkey="Key"
+yum clean all
+yum repolist
+yum update -y
