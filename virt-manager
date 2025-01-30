@@ -1,0 +1,10 @@
+XAUTHORITY=$HOME/.Xauthority sudo virt-manager
+Virt Manager issue
+cd /var/run/libvirt
+chown root:root libvirt-sock
+chmod 777 libvirt-sock
+usermod -a -G libvirt vmsadmin
+usermod -a -G libvirt uidai
+mkhomedir_helper vmsadmin
+mkhomedir_helper uidai
+systemctl restart libvirtd
