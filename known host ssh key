@@ -1,0 +1,2 @@
+To remove particular key 
+ssh-keygen -f "/home/$user/.ssh/known_hosts" -R "$ip"
