@@ -1,0 +1,12 @@
+Proxy
+export http_proxy=https://10.67.18.50:3128/
+export http_proxy=http://10.67.18.50:3128/
+export https_proxy=https://10.67.18.50:3128/
+echo $http_proxy
+echo $https_proxy
+---------------------------------------------------
+For permanent-proxy settings
+export http_proxy=http://10.66.18.50:3128/
+export https_proxy=https://10.66.18.50:3128/
+echo "export https_proxy=https://10.66.18.50:3128/" > /etc/profile.d/https_proxy.sh
+echo "export http_proxy=https://10.66.18.50:3128/" > /etc/profile.d/http_proxy.shy
