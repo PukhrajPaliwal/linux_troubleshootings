@@ -1,0 +1,47 @@
+AD integration of linux 
+
+#cat /etc/hosts 
+
+10.81.49.100    dc2cpvedgaddns1.uidai.com       dc2cpvedgaddns1 
+
+#cat /etc/netplan/00.yaml 
+
+nameservers: 
+
+                addresses: [10.81.49.100] 
+
+#sudo apt install sssd-ad sssd-tools realmd adcli 
+
+#sudo realm -v discover uidai.com 
+
+#apt install -y realmd sssd sssd-tools libnss-sss libpam-sss krb5-user adcli samba-common-bin 
+
+#cat /etc/krb5.conf 
+
+default_realm = uidai.com 
+
+[realms] 
+
+        uidai.com = { 
+
+                kdc = dc2cpvedgaddns1 
+
+                admin_server = 10.81.49.100;10.81.49.101 
+
+#sudo realm join -v uidai.com 
+
+#cat /etc/krb5.conf 
+
+#sudo realm permit --all 
+
+#sudo realm permit pukhrajpaliwal.hpe@uidai.com 
+
+#systemctl restart sssd.service 
+
+#systemctl status sssd.service 
+
+#pam-auth-update --enable mkhomedir 
+
+#id pukhrajpaliwal.hpe 
+
+#vi /etc/sudoers 
