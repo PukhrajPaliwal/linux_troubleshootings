@@ -1,0 +1,5 @@
+sed -i s/"max_log_file = 8"/"max_log_file = 500"/ /etc/audit/auditd.conf;
+sed -i s/"freq = 50"/"freq = 1500"/ /etc/audit/auditd.conf;
+sed -i s/"num_logs = 5"/"num_logs = 4"/ /etc/audit/auditd.conf;
+sed -i s/"max_log_file_action = keep_logs"/"max_log_file_action = rotate"/ /etc/audit/auditd.conf;
+systemctl restart auditd
